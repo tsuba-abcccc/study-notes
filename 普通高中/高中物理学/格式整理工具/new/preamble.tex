@@ -1,0 +1,59 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[UTF8,openany,fontset=fandol]{ctexbook}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{empheq}
+\usepackage{upgreek}
+\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{wrapfig}
+\usepackage{enumitem}
+\usepackage[perpage]{footmisc}
+\usepackage{indentfirst}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[unicode,hidelinks]{hyperref}
+\ctexset{
+  chapter = {name = {}, number = \arabic{chapter}, afterindent = true},
+  section = {name = {}, number = \thechapter.\arabic{section}, afterindent = true},
+  subsection = {name = {}, number = \thesection.\arabic{subsection}, afterindent = true}
+}
+\hypersetup{pdftitle={高中物理学},pdfauthor={啊波呲}}
+\title{高中物理学}
+\author{啊波呲}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+% 插图或长公式放不下时移到下一页, 本页底部留白, 不拉伸行距.
+\raggedbottom
+% 增大基本行距; 行内大分数较高时, 自动保留相邻行之间的净空.
+\linespread{1.25}
+\setlength{\lineskip}{4pt}
+\setlength{\lineskiplimit}{3pt}
+% 行间公式作为正文句子的一部分处理: 矮公式少留白, 高公式和带框公式保持适度间距.
+% \normalsize 会重设这些长度, 所以在正文开始时和每次 \normalsize 之后都重新设置.
+\newcommand{\setdisplayskips}{%
+  \setlength{\abovedisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\belowdisplayskip}{4pt plus 2pt minus 1pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 1pt minus 1pt}%
+  \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}%
+}
+\AtBeginDocument{\setdisplayskips}
+\AddToHook{cmd/normalsize/after}{\setdisplayskips}
+\setlength{\jot}{3pt}
+\setlength{\fboxsep}{3pt}
+\setlist[1]{itemsep=1pt,parsep=0pt,topsep=3pt,partopsep=0pt}
+\newtheoremstyle{chinesetextbook}
+ {0pt}{0pt}{\normalfont}{\parindent}{\bfseries}{}{1em}
+ {\thmname{#1}\thmnumber{#2}\thmnote{ (#3)}}
+\theoremstyle{chinesetextbook}
+\newtheorem{example}{例}[chapter]
+\renewcommand{\theexample}{\arabic{example}}
+\newenvironment{solution}{\par\indent\textbf{解:} \ignorespaces}{\par}
+\newenvironment{cnproof}{\par\indent\textbf{证明:} \ignorespaces}{\par}
+% 并列标题之间、小标题与正文之间的间隔.
+\newcommand{\bre}{\ \ \ }
+% 数值后的单位, 如 $5\unit{m/s}$.
+\newcommand{\unit}[1]{\ \mathrm{#1}}
+\let\cleardoublepage\clearpage

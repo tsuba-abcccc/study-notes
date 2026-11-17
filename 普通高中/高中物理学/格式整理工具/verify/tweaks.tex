@@ -1,0 +1,14 @@
+% verification-only tweaks: deterministic text order, no page furniture
+\usepackage{float}
+\makeatletter
+\let\vf@figure\figure \let\vf@endfigure\endfigure
+\renewenvironment{figure}[1][]{\vf@figure[H]}{\vf@endfigure}
+\let\vf@table\table \let\vf@endtable\endtable
+\renewenvironment{table}[1][]{\vf@table[H]}{\vf@endtable}
+\renewenvironment{wrapfigure}[3][]{\vf@figure[H]}{\vf@endfigure}
+\makeatother
+\renewcommand{\footnote}[1]{〔#1〕}
+\renewcommand{\tableofcontents}{}
+\pagestyle{empty}
+\ctexset{chapter/pagestyle=empty,part/pagestyle=empty}
+\AddToHook{para/begin}{\llap{\P}}

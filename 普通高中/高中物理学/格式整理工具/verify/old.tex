@@ -1,0 +1,16 @@
+\input{../new/preamble.tex}
+% the old body needs the old macros
+\makeatletter
+\let\example\relax \let\endexample\relax \let\solution\relax \let\endsolution\relax
+\makeatother
+\newcounter{exam}[chapter]
+\newcommand{\examlabel}{\textbf{例\theexam}}
+\newcommand{\soln}{\textbf{解}\bre}
+\newenvironment{example}{\bigskip\par\refstepcounter{exam}\examlabel\bre}{\par}
+\newenvironment{solution}{\par\soln}{\par\bigskip}
+\newcommand{\setdisplaywhitespace}{}
+\renewcommand{\pagenumbering}[1]{}
+\input{tweaks.tex}
+\begin{document}
+\input{oldbody.tex}
+\end{document}
